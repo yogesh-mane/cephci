@@ -55,6 +55,12 @@ A simple test suite wrapper that executes tests based on yaml test configuration
         [--skip-version-compare]
         [--custom-config <key>=<value>]...
         [--custom-config-file <file>]
+  run.py --ocs --global-conf FILE --inventory FILE --suite FILE
+        [--osp-cred <file>]
+        [--store]
+        [--reuse <file>]
+        [--instances-name <name>]
+        [--log-level <level>]
   run.py --cleanup=name [--osp-cred <file>]
         [--log-level <LEVEL>]
 
@@ -209,7 +215,7 @@ def run(args):
     base_url = args.get('--rhs-ceph-repo', None)
     ubuntu_repo = args.get('--ubuntu-repo', None)
     kernel_repo = args.get('--kernel-repo', None)
-    rhbuild = args.get('--rhbuild')
+    rhbuild = args.get('--rhbuild') or '3'
     docker_registry = args.get('--docker-registry', None)
     docker_image = args.get('--docker-image', None)
     docker_tag = args.get('--docker-tag', None)
@@ -388,6 +394,7 @@ def run(args):
                            docker_tag=docker_tag))
         service.start_launch(name=launch_name, start_time=timestamp(), description=launch_desc)
 
+    clients = []
     if reuse is None:
         ceph_cluster_dict, clients = create_nodes(conf, inventory, osp_cred, run_id, service, instances_name)
     else:

@@ -1,0 +1,13 @@
+globals:
+  - ceph-cluster:
+     name: ceph
+     node1:
+       role: master
+     node2:
+       role: compute
+     node3:
+       role: compute
+     node4:
+       role: infra
+     node5:
+       role: infra

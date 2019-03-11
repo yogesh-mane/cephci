@@ -1,0 +1,6 @@
+tests:
+  - test:
+      name: install openshift
+      desc: install openshift with openshift-ansible
+      module: test_install_openshift.py
+      abort-on-fail: True

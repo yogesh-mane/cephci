@@ -931,7 +931,7 @@ class SSHConnectionManager(object):
                                       look_for_keys=self.look_for_keys)
                 break
             except Exception as e:
-                logger.warn('Connection outage: \n{error}'.format(error=e))
+                logger.warning('Connection outage: \n{error}'.format(error=e))
                 if not self.__outage_start_time:
                     self.__outage_start_time = datetime.datetime.now()
                 if datetime.datetime.now() - self.__outage_start_time > self.outage_timeout:
