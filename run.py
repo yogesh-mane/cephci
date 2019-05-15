@@ -287,7 +287,6 @@ def run(args):
         if ubuntu_repo is None:
             ubuntu_repo = \
                 'http://download.eng.bos.redhat.com/rcm-guest/ceph-drops/3.2/latest-RHCEPH-3.3-Ubuntu/'
-
     if os.environ.get('TOOL') is not None:
         ci_message = json.loads(os.environ['CI_MESSAGE'])
         compose_id = ci_message['compose_id']
